@@ -1,0 +1,28 @@
+{
+  "name": "digiworks",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francescorizzo02/Digiworks.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Typescript",
+    "MongoDB"
+  ],
+  "author": "Digidevs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francescorizzo02/Digiworks/issues"
+  },
+  "homepage": "https://github.com/francescorizzo02/Digiworks#readme",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
+}
