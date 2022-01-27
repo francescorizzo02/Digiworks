@@ -4,7 +4,12 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc",
+    "watch": "tsc -w",
+    "development:start": "nodemon ./build/release/server.js",
+    "clean": "rm -rf ./build",
+    "development:compile": "npm run clean && npm run compile",
+    "development:watch": "npm run clean && npm run watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +32,7 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "helmet": "^5.0.2",
+    "nodemon": "^2.0.15",
     "typescript": "^4.5.5"
   },
   "devDependencies": {
