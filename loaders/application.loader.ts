@@ -3,6 +3,10 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
+//importing middlewares
+import ping from "../middlewares/ping.middlewares";
+import status from "../middlewares/status.middlewares";
+
 //import configs
 import configs from "../.configs";
 
@@ -41,6 +45,9 @@ export default class Application {
 
     //setting app CORS policy
     application.use(cors());
+
+    application.get("/ping", ping());
+    application.get("/status", status());
 
     //setting _application
     return application;
