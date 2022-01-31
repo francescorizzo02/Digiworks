@@ -1,10 +1,10 @@
-//import dependences
+//importing dependences
 import mongoose from "mongoose";
 
-//import loaders
+//importing loaders
 import { connect } from "../../../loaders/database.loaders";
 
-//import schemas
+//importing schemas
 import ContactSchema from "./contacts.schema";
 
 export default class ContactModel {

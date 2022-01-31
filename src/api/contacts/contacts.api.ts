@@ -1,13 +1,13 @@
-//import dependences
+//importing dependences
 import express from "express";
 
-//import interface
+//importing interface
 import { Request } from "express";
 import { Response } from "express";
 import { NextFunction } from "express";
 import Henry from "../../../loaders/error.loader";
 
-//import middleware
+//importing middleware
 import httpMethodNotSupported from "../../../middlewares/httpMethodNotSupported.middleware";
 
 //importing data layers
@@ -53,7 +53,7 @@ contactsRouter
         throw new Henry("201", "phoneNumber");
       }
 
-      //organaised payload
+      //organized payload
       payload = {
         name: name,
         surname: surname,
