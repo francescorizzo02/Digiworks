@@ -4,11 +4,14 @@ import cors from "cors";
 import helmet from "helmet";
 
 //importing middlewares
-import ping from "../middlewares/ping.middlewares";
-import status from "../middlewares/status.middlewares";
+import ping from "../middlewares/ping.middleware";
+import status from "../middlewares/status.middleware";
 
-//import configs
+//importing configs
 import configs from "../.configs";
+
+//importing routers
+import rootRouter from "../src/api/router.loader";
 
 export default class Application {
   private _application;
@@ -48,6 +51,7 @@ export default class Application {
 
     application.get("/ping", ping());
     application.get("/status", status());
+    application.use("/api", rootRouter);
 
     //setting _application
     return application;

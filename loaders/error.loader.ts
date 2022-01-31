@@ -17,7 +17,7 @@ export default class Henry extends Error {
       //inizialaicing
       this._status = error.status;
       this._code = code;
-      this._error = this._setErrorFromStatusCode();
+      this._error = this._setErrorFromStatusCode(this._status);
       this._description = error.description;
       this._isOperational = isOperational;
       //Create the stackTrace on Henry object
@@ -26,8 +26,8 @@ export default class Henry extends Error {
       throw error;
     }
   }
-  private _setErrorFromStatusCode() {
-    switch (this._status) {
+  private _setErrorFromStatusCode(status: number) {
+    switch (status) {
       case 400:
         return "Bad request";
       case 401:
