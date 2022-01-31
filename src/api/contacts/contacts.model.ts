@@ -7,7 +7,7 @@ import { connect } from "../../../loaders/database.loaders";
 //import schemas
 import ContactSchema from "./contacts.schema";
 
-class ContactModel {
+export default class ContactModel {
   private _contactModel: mongoose.Model<ContactModel, {}, {}, {} | undefined>;
 
   constructor() {

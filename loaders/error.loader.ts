@@ -1,11 +1,11 @@
 import errorDictionary from "../globals/error.dictionary";
 
 export default class Henry extends Error {
-  public _code: string;
-  public _error: string;
-  public _status: number;
-  public _description: string;
-  public _isOperational: boolean;
+  public code: string;
+  public error: string;
+  public status: number;
+  public description: string;
+  public isOperational: boolean;
 
   constructor(code: string, errorData?: string, isOperational = true) {
     try {
@@ -15,11 +15,11 @@ export default class Henry extends Error {
       super();
       Object.setPrototypeOf(this, new.target.prototype);
       //inizialaicing
-      this._status = error.status;
-      this._code = code;
-      this._error = this._setErrorFromStatusCode(this._status);
-      this._description = error.description;
-      this._isOperational = isOperational;
+      this.status = error.status;
+      this.code = code;
+      this.error = this._setErrorFromStatusCode(this.status);
+      this.description = error.description;
+      this.isOperational = isOperational;
       //Create the stackTrace on Henry object
       Error.captureStackTrace(this);
     } catch (error) {
