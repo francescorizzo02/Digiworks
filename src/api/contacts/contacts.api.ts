@@ -10,6 +10,9 @@ import Henry from "../../../loaders/error.loader";
 //import middleware
 import httpMethodNotSupported from "../../../middlewares/httpMethodNotSupported.middleware";
 
+//importing data layers
+import ContactsData from "./contacts.data";
+
 //declaring constans
 const CONTACTS_HTTP_METHODS = ["GET", "POST"];
 
@@ -32,7 +35,10 @@ contactsRouter
       let name = req.body.name;
       let surname = req.body.surname;
       let email = req.body.email;
+      let phoneNumber = req.body.phoneNumber;
       let payload;
+      let contactsData = new ContactsData();
+      let data;
 
       if(!name) {
         throw new Henry("201", "name");
@@ -43,15 +49,22 @@ contactsRouter
       if(!email) {
         throw new Henry("201", "email");
       }
+      if(!phoneNumber) {
+        throw new Henry("201", "phoneNumber");
+      }
 
       //organaised payload
       payload = {
         name: name,
         surname: surname,
         fullname: `${name} ${surname}`,
-        email: email
+        email: email,
+        phoneNumber: phoneNumber,
       }
-      res.status(200).json({Risposta: "Documento creato con successo"});
+
+      data = contactsData.createContact(payload);
+      
+      res.status(200).json({data: data});
     } catch (error) {
       next(error);
     }

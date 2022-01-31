@@ -4,6 +4,10 @@ export default (code: string, errorData: string = "") => {
       status: 500,
       description: `Unexpected Exception ${errorData}`,
     },
+    "001": {
+      status: 400,
+      description: `Unexpected error ${errorData}`,
+    },
     "100": {
       status: 400,
       description: "generic api error",

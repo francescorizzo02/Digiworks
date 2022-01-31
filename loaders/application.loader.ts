@@ -6,6 +6,7 @@ import helmet from "helmet";
 //importing middlewares
 import ping from "../middlewares/ping.middleware";
 import status from "../middlewares/status.middleware";
+import error from "../middlewares/error.middleware";
 
 //importing configs
 import configs from "../.configs";
@@ -52,6 +53,8 @@ export default class Application {
     application.get("/ping", ping());
     application.get("/status", status());
     application.use("/api", rootRouter);
+
+    application.use(error());
 
     //setting _application
     return application;
