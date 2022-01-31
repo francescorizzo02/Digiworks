@@ -9,7 +9,7 @@ import ContactSchema from "./contacts.schema";
 
 class ContactModel {
   private _contactModel: mongoose.Model<ContactModel, {}, {}, {} | undefined>;
-  
+
   constructor() {
     this._setModel();
     this._contactModel = this.getModel();
@@ -20,6 +20,6 @@ class ContactModel {
   }
 
   private _setModel() {
-    this._contactModel = connect().model("Contact", ContactSchema)
+    this._contactModel = connect().model("Contact", ContactSchema);
   }
 }
