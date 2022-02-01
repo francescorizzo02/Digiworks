@@ -23,6 +23,9 @@ export default class DealsData {
       if (!deal) {
         throw new Henry("001", "while create deals");
       }
+
+      return deal;
+
     } catch (error) {
       throw error;
     }
@@ -30,7 +33,7 @@ export default class DealsData {
 }
 
 interface CreateDealInterface {
-  contact_deal: string;
-  object_deal: string;
-  duration_deal: string;
+  contact: string;
+  object: string;
+  duration: string;
 }

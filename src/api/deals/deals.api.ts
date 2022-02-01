@@ -32,28 +32,28 @@ dealsRouter
   .post(async (req: Request, res: Response, next: NextFunction) => {
     try {
       //declaration spot
-      let contact_deal = req.body.contact_deal;
-      let object_deal = req.body.object_deal;
-      let duration_deal = req.body.duration_deal;
+      let contact = req.body.contact;
+      let object = req.body.object;
+      let duration = req.body.duration;
       let payload;
       let dealsData = new DealsData();
       let data;
 
-      if (!contact_deal) {
+      if (!contact) {
         throw new Henry("201", "contact");
       }
-      if (!object_deal) {
+      if (!object) {
         throw new Henry("201", "object");
       }
-      if (!duration_deal) {
+      if (!duration) {
         throw new Henry("201", "duration");
       }
 
       //organized payload
       payload = {
-        contact_deal: contact_deal,
-        object_deal: object_deal,
-        duration_deal: duration_deal,
+        contact: contact,
+        object: object,
+        duration: duration,
       };
 
       data = dealsData.createDeal(payload);
