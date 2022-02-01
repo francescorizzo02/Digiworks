@@ -4,8 +4,12 @@ import DealModel from "./deals.model";
 //importing loaders
 import Henry from "../../../loaders/error.loader";
 
+//importing utils
+import querryAggregator from "../../../globals/querryAggregator.util";
+
 //importing interface
 import { Model } from "mongoose";
+import { QuerryOptions } from "../../../globals/express";
 
 export default class DealsData {
   private _dealModel: Model<DealModel>;
@@ -14,7 +18,22 @@ export default class DealsData {
     this._dealModel = new DealModel().getModel();
   }
 
-  async getDeals() {}
+  async getDeals(options: QuerryOptions) {
+    //declaration spot
+    let stages: any = querryAggregator(options);
+    let deals = await this._dealModel?.aggregate(stages);
+    let totalDeals = await this._dealModel?.countDocuments(options.filter);
+
+    if (!deals) {
+      throw new Henry("202", "Deals");
+    }
+
+    return {
+      document: deals,
+      totalDeals: totalDeals,
+      currentCount: deals.length,
+    };
+  }
 
   async createDeal(payload: CreateDealInterface) {
     try {
@@ -25,7 +44,6 @@ export default class DealsData {
       }
 
       return deal;
-
     } catch (error) {
       throw error;
     }

@@ -39,13 +39,15 @@ contactsRouter
 
         let data = await contactsData.getContacts(options);
 
-        res.status(200).json({ data: {
-          documents: data.documents,
-          totalCount: data.totalCount,
-          currentCount: data.currentCount,
-          currentPage: options.currentPage,
-          totalPages: Math.ceil(data.totalCount / options.limit) || 0
-        } });
+        res.status(200).json({
+          data: {
+            documents: data.documents,
+            totalCount: data.totalCount,
+            currentCount: data.currentCount,
+            currentPage: options.currentPage,
+            totalPages: Math.ceil(data.totalCount / options.limit) || 0,
+          },
+        });
       } catch (error) {
         next(error);
       }
