@@ -8,14 +8,14 @@ import { connect } from "../../../loaders/database.loaders";
 import DealSchema from "./deals.schema";
 
 export default class DealModel {
-  private _dealModel: mongoose.Model<DealModel, {}, {}, {} | undefined>;
+  private _dealModel: mongoose.Model<DealModel>;
 
   constructor() {
     this._setModel();
     this._dealModel = this.getModel();
   }
 
-  public getModel(): mongoose.Model<DealModel, {}, {}, {} | undefined> {
+  public getModel(): mongoose.Model<DealModel> {
     return this._dealModel;
   }
   

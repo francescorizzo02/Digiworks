@@ -23,7 +23,11 @@ export default (code: string, errorData: string = "") => {
     "201": {
       status: 400,
       description: `missing or invalid ${errorData}`,
-    }
+    },
+    "202": {
+      status: 404,
+      description: `${errorData} not found`,
+    },
   };
 
   return error[code];

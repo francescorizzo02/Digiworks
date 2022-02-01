@@ -2,26 +2,26 @@
 import mongoose from "mongoose";
 
 let DealSchema = new mongoose.Schema({
-  contact_deal: {
+  contact: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Contact",
+    required: true,
+  },
+  object: {
+    type: String,
+    trim: true, //spazi prima e dopo il testo
+    required: true,
+  },
+  description: {
+    type: String,
+    trim: true,
+  },
+  duration: {
     type: String,
     trim: true,
     required: true,
   },
-  object_deal: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  description_deal: {
-    type: String,
-    trim: true,
-  },
-  duration_deal: {
-    type: String,
-    trim: true,
-    required: true,
-  },
-  created_deal: {
+  created: {
     type: String,
     default: new Date(),
   },
@@ -30,11 +30,11 @@ let DealSchema = new mongoose.Schema({
 export default DealSchema;
 
 export interface DealInterface {
-  contact_deal: string;
-  object_deal: string;
-  description_deal: string;
-  duration_deal: string;
-  created_deal: Date;
+  contact: string;
+  object: string;
+  description: string;
+  duration: string;
+  created: Date;
   _id: mongoose.Schema.Types.ObjectId;
 }
 
