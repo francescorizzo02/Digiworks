@@ -8,14 +8,14 @@ import { connect } from "../../../loaders/database.loaders";
 import ContactSchema from "./contacts.schema";
 
 export default class ContactModel {
-  private _contactModel: mongoose.Model<ContactModel, {}, {}, {} | undefined>;
+  private _contactModel: mongoose.Model<ContactModel>;
 
   constructor() {
     this._setModel();
     this._contactModel = this.getModel();
   }
 
-  public getModel(): mongoose.Model<ContactModel, {}, {}, {} | undefined> {
+  public getModel(): mongoose.Model<ContactModel> {
     return this._contactModel;
   }
 
